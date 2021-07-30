@@ -1,0 +1,37 @@
+{% if product.available == true %}
+
+  {% if settings.show_add_to_cart_button == true %}
+    <product-form>
+      {%- form 'product', product -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <div class="product-form__buttons">
+          <button
+            type="submit"
+            name="add"
+            class="button button--full-width"
+          >Add to cart
+          </button>
+        </div>
+      {%- endform -%}
+    </product-form>
+  {% else %}
+
+    {% if settings.show_buy_now_button == true %}
+      <buy-now-form>
+        {%- form 'product', product -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <div class="product-form__buttons">
+            <button
+              type="submit"
+              name="add"
+              class="button button--full-width"
+            >Buy now
+            </button>
+          </div>
+        {%- endform -%}
+      </buy-now-form>
+    {% endif %}
+
+  {% endif %}
+
+{% endif %}
