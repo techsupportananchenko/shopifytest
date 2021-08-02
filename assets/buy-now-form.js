@@ -11,8 +11,10 @@ class BuyNowForm extends HTMLElement {
 
     const submitButton = this.querySelector('[type="submit"]');
 
-    submitButton.setAttribute('disabled', true);
-    submitButton.classList.add('loading');
+    if(submitButton){
+      submitButton.setAttribute('disabled', true);
+      submitButton.classList.add('loading');
+    }
 
     const body = JSON.stringify({...JSON.parse(serializeForm(this.form))});
 
@@ -22,10 +24,6 @@ class BuyNowForm extends HTMLElement {
       .catch((e) => {
         console.error(e);
       })
-      .finally(() => {
-        // submitButton.classList.remove('loading');
-        // submitButton.removeAttribute('disabled');
-      });
   }
 }
 

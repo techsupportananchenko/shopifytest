@@ -1,6 +1,6 @@
-{% if product.available == true %}
+{% if product.available %}
 
-  {% if settings.show_add_to_cart_button == true %}
+  {% if settings.show_add_to_cart_button %}
     <product-form>
       {%- form 'product', product -%}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
@@ -16,7 +16,7 @@
     </product-form>
   {% else %}
 
-    {% if settings.show_buy_now_button == true %}
+    {% if settings.show_buy_now_button %}
       <buy-now-form>
         {%- form 'product', product -%}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
