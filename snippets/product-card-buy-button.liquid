@@ -1,9 +1,9 @@
 {% if product.available %}
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
 
   {% if settings.show_add_to_cart_button %}
-    <product-form>
+    <collection-product-form>
       {%- form 'product', product -%}
-        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
         <div class="product-form__buttons">
           <button
             type="submit"
@@ -12,8 +12,24 @@
           >Add to cart
           </button>
         </div>
+        <select name="id" class="section-variant">
+          {% for variant in product.variants %}
+            <option 
+              {% if variant == current_variant %}selected="selected"{% endif %}
+              value="{{variant.id}}" 
+              data-price="{{variant.price | money}}" 
+              data-url="{{product.url}}?variant={{variant.id}}" 
+              data-available-quantity="{{variant.inventory_quantity}}"
+              data-variant-title="{{variant.title}}"
+              data-product-title="{{product.title}}"
+            >
+              {{variant.title}} 
+            </option>
+          {% endfor %}
+        </select>
+        {% render 'form-error' %}
       {%- endform -%}
-    </product-form>
+    </collection-product-form>
   {% else %}
 
     {% if settings.show_buy_now_button %}
@@ -35,3 +51,5 @@
   {% endif %}
 
 {% endif %}
+
+{{ 'product-form.scss.css' | asset_url | stylesheet_tag }}

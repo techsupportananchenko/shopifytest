@@ -93,6 +93,7 @@ class CartItems extends HTMLElement {
   }
 
   updateLiveRegions(line, itemCount) {
+    console.log(line, itemCount)
     if (this.currentItemCount === itemCount) {
       document.getElementById(`Line-item-error-${line}`)
         .querySelector('.cart-item__error-text')
