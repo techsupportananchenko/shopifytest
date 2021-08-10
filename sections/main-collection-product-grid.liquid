@@ -175,7 +175,6 @@
                     <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
                   {%- endfor -%}
                 </select>
-                {% render 'icon-caret' %}
               </div>
             </div>
 
@@ -447,6 +446,9 @@
     {%- endif -%}
   {%- endpaginate -%}
 </div>
+
+<script src="{{ 'collection-product-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'buy-now-form.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {

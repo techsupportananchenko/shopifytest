@@ -250,5 +250,26 @@
         "info": "t:settings_schema.social-media.settings.social_vimeo_link.info"
       }
     ]
+  },
+  {
+    "name": "Collection",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Buy Buttons"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_buy_now_button",
+        "default": false,
+        "label": "Show By Now button"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_add_to_cart_button",
+        "default": false,
+        "label": "Show Add To Cart button"
+      }
+    ]
   }
 ]

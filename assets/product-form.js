@@ -1,6 +1,6 @@
 class ProductForm extends HTMLElement {
   constructor() {
-    super();   
+    super();
 
     this.form = this.querySelector('form');
     this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
@@ -10,7 +10,7 @@ class ProductForm extends HTMLElement {
   onSubmitHandler(evt) {
     evt.preventDefault();
     this.cartNotification.setActiveElement(document.activeElement);
-    
+
     const submitButton = this.querySelector('[type="submit"]');
 
     submitButton.setAttribute('disabled', true);
