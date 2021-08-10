@@ -1,5 +1,9 @@
 {% if product.available %}
   {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign variants_length = 0 -%}
+  {% for variant in product.variants %}
+    {%- assign variants_length = variants_length | plus: 1 -%}
+  {% endfor %}
 
   {% if settings.show_add_to_cart_button %}
     <collection-product-form>
@@ -12,7 +16,7 @@
           >Add to cart
           </button>
         </div>
-        <select name="id" class="section-variant">
+        <select name="id" class="section-variant {% if product.has_only_default_variant or variants_length <= 1 %}hidden{% endif %}">
           {% for variant in product.variants %}
             <option 
               {% if variant == current_variant %}selected="selected"{% endif %}
@@ -27,6 +31,7 @@
             </option>
           {% endfor %}
         </select>
+
         {% render 'form-error' %}
       {%- endform -%}
     </collection-product-form>
